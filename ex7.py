@@ -5,7 +5,8 @@ if service == "good":
     tipAmt = bill*0.2
     print(f'Tip Amount: ${tipAmt}')
     total = bill + tipAmt
-    print(f'Total amount: ${total})')
+    rounded = round(total,2)
+    print(f'Total amount: ${rounded})')
 
 if service == "fair":
     tipAmt = bill*0.15
