@@ -20,18 +20,18 @@ while True:
     queryInt = int(query)
     
     if(query == '1'):
-        key = input("\nName: ")
+        key = input("\nName: ").capitalize()
         print(f'\nFound entry for {key}: {phonebook[key]}')
         
     elif(query == '2'):
         #change/add
-        name = input("Name: ")
+        name = input("Name: ").capitalize()
         newNumber = input("Phone# >>")
         phonebook[name]= newNumber
         print(f"Entry stored for {name}")
     elif(query == '3'):
         #delete
-        answer = input("Name: ")
+        answer = input("Name: ").capitalize()
         del phonebook[answer]
         print(f'Deleted entry for {answer}')
         
