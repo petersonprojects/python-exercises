@@ -1,52 +1,97 @@
-#load dictionary data first
+#load dictionary data and json module
 import json
 
-with open('phonebook.json', 'r') as filehandler:
-    phonebook = json.load(filehandler)
+def load():
+    with open('phonebook.json', 'r') as filehandler:
+        phonebook = json.load(filehandler)
+    return phonebook
 
-items = phonebook.items()
+def lookUp():
+    while True:
+        key = input("\nName: ").capitalize()
+        isFound = key in phonebook
+        
+        if(isFound):
+            print(f'\nFound entry for {key}: {phonebook[key]}')
+            break
+        else:
+            print('Not found. Try again.')
+
+def setEntry():
+    name = input("Name: ").capitalize()
+    newNumber = input("Phone# >>")
+    
+    phonebook[name] = newNumber
+    
+    print(f"Entry stored for {name}")
+    
+def listAllEntries():
+    items = phonebook.items()
+    print("")
+
+    for key, value in items:
+        print(f'{key}: {value}')
+
+def deleteEntry():
+            #delete
+    while True:
+        answer = input("Name to delete: ").capitalize()
+        
+        isFound = answer in phonebook
+        
+        if(isFound):
+            del phonebook[answer]
+            print(f'Deleted entry for {answer}')
+            break
+        else:
+            print("Name not found. Try again.")
+            
+def saveData():
+    with open('phonebook.json', 'w') as filehandler:
+        json.dump(phonebook, filehandler)
+    print("\nPhonebook saved. Program quit.\n")
+    
+def default():
+    print("\n\nInvalid option.\n\t\tTry again.\n")
+
+phonebook = load()
 
 while True:
     
-    print("\nElectronic Phonebook")
-    print("========================\n")
-    print("1. Look up an entry")
-    print("2. Set an entry")
-    print("3. Delete an entry")
-    print("4. List all entries")
-    print("5. Quit")
+    print("""
+                Electronic Phonebook
+                ========================
+                1. Look up an entry
+                2. Set an entry
+                3. Delete an entry
+                4. List all entries
+                5. Quit 
+            
+            """)
     
     query = input("\nWhat do you want to do? (1-5): ")
-    queryInt = int(query)
     
     if(query == '1'):
-        key = input("\nName: ").capitalize()
-        print(f'\nFound entry for {key}: {phonebook[key]}')
         
+        lookUp()
+
     elif(query == '2'):
-        #change/add
-        name = input("Name: ").capitalize()
-        newNumber = input("Phone# >>")
-        phonebook[name]= newNumber
-        print(f"Entry stored for {name}")
-    elif(query == '3'):
-        #delete
-        answer = input("Name: ").capitalize()
-        del phonebook[answer]
-        print(f'Deleted entry for {answer}')
         
+        setEntry()
+        
+    elif(query == '3'):
+        
+        deleteEntry()
+
     elif(query == '4'):
-        #for loop list all entries
-        print("")
-        for key, value in items:
-            print(f'{key}: {value}')
-            
+        
+        listAllEntries()
+
     elif(query == '5'):
-        #write data to a file
-        with open('phonebook.json', 'w') as filehandler:
-            json.dump(phonebook, filehandler)
-        print("\nPhonebook saved. Program quit.\n")
+        
+        saveData()
         break
     
-    elif (query == '') or queryInt >= 6:
-        print("\n\nInvalid option.\n\t\tTry again.\n")
+    else:
+        default()
+
