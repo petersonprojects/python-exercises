@@ -1,18 +1,30 @@
 
 # 2520 is the smallest number that can be divided by each 
-# of the numbers from 1 to 10 without any remainder. 
+# of the numbers from 1 to 10 without any remainder.
 # What is the smallest positive number that is evenly divisible 
 # by all of the numbers from 1 to 20?
 
-count = 0
 
-for number in range(20,300000000):
-    for divide in range(1,21):
-        if(number%divide == 0):
-            count+=1
-            if(count >= 20):
-                print(number)
-    count = 0
+# def evaluateLCD():
+    
+        
+#     count = 0
+#     result = 0
+#     for x in range(1,21):
+        
+#         for num in range (20, 1000001):
+
+#             if(num % x == 0):
+#                 count += 1
+#             else:
+#                 count = 0
+#                 num = num * 20
+
+#             if(count >= 20):
+#                 result = num
+#     return result
+
+# print(evaluateLCD())
 
 
 
