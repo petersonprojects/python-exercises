@@ -6,6 +6,9 @@ def load():
         phonebook = json.load(filehandler)
     return phonebook
 
+
+phonebook = load()
+
 def lookUp():
     while True:
         key = input("\nName: ").capitalize()
@@ -27,13 +30,13 @@ def setEntry():
     
 def listAllEntries():
     items = phonebook.items()
+    
     print("")
 
     for key, value in items:
         print(f'{key}: {value}')
 
 def deleteEntry():
-            #delete
     while True:
         answer = input("Name to delete: ").capitalize()
         
@@ -53,12 +56,12 @@ def saveData():
     
 def default():
     print("\n\nInvalid option.\n\t\tTry again.\n")
-
-phonebook = load()
-
-while True:
     
-    print("""
+def main():
+
+    while True:
+        
+        print("""
                 Electronic Phonebook
                 ========================
                 1. Look up an entry
@@ -66,32 +69,34 @@ while True:
                 3. Delete an entry
                 4. List all entries
                 5. Quit 
+                
+                """)
+        
+        query = input("\nWhat do you want to do? (1-5): ")
+        
+        if(query == '1'):
             
-            """)
-    
-    query = input("\nWhat do you want to do? (1-5): ")
-    
-    if(query == '1'):
-        
-        lookUp()
+            lookUp()
 
-    elif(query == '2'):
-        
-        setEntry()
-        
-    elif(query == '3'):
-        
-        deleteEntry()
+        elif(query == '2'):
+            
+            setEntry()
+            
+        elif(query == '3'):
+            
+            deleteEntry()
 
-    elif(query == '4'):
-        
-        listAllEntries()
+        elif(query == '4'):
+            
+            listAllEntries()
 
-    elif(query == '5'):
+        elif(query == '5'):
+            
+            saveData()
+            break
         
-        saveData()
-        break
-    
-    else:
-        default()
+        else:
+            default()
 
+
+main()
