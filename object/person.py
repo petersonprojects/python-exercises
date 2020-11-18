@@ -6,7 +6,7 @@ class Person:
         self.phone = phone
         self.friends = []
         self.count = 0
-     
+    
     def greet(self, other_person):
         print('Hello {}, I am {}!'.format(other_person, self.name))
         self.count += 1
@@ -19,7 +19,7 @@ class Person:
         
     def num_friends(self):
         return len(self.friends)
-     
+
 sonny = Person("Sonny", "sonny@hotmail.com", "483-485-4948")
 jordan = Person("Jordan", "jordan@aol.com", "495-586-3456")
 
